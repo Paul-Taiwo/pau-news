@@ -1,10 +1,27 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { View, Text, TouchableOpacity } from "react-native";
 
-const DynamicScreen = () => {
+const DynamicScreen = ({ name, navigation }) => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Business</Text>
+      <Text>{name}Hre</Text>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Details");
+        }}
+        style={{
+          padding: 10,
+          fontSize: 18,
+          backgroundColor: "#000",
+        }}>
+        <Text
+          style={{
+            color: "#fff",
+          }}>
+          Click
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
