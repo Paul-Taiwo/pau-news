@@ -1,0 +1,13 @@
+{
+  "name": "pau-news",
+  "displayName": "pau-news",
+  "orientation": "default",
+  "expo": {
+    "name": "pau-news",
+    "slug": "pau-news",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
