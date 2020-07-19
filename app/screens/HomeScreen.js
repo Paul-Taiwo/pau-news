@@ -5,6 +5,7 @@ import globalStyle from "../styles/globalStyle";
 import Featureds from "../components/Featureds";
 import SourcesCard from "../components/SourceCard";
 import NewsCard from "../components/NewsCard";
+import { getBgColor } from "../utils";
 
 const HomeScreen = ({ name, navigation }) => {
   const Width = Dimensions.get("window").width;
@@ -49,9 +50,9 @@ const HomeScreen = ({ name, navigation }) => {
               paddingLeft: 20,
             }}
             style={[globalStyle.mb20]}>
-            <SourcesCard />
-            <SourcesCard />
-            <SourcesCard />
+            {[...Array(5).keys()].map((x, ind) => (
+              <SourcesCard key={ind} bgColor={getBgColor()} />
+            ))}
           </ScrollView>
         </View>
 

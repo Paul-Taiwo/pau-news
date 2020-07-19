@@ -9,7 +9,7 @@ import img from "../../assets/images/bbc.jpg";
 import globalStyle from "../styles/globalStyle";
 import Featureds from "../components/Featureds";
 
-const DetailsScreen = () => {
+const DetailsScreen = ({ navigation }) => {
   const [news, setNews] = useState({
     fetched: false,
     data: {},
@@ -51,7 +51,9 @@ const DetailsScreen = () => {
                   <Text style={styles.contentText}>{news.data.content}</Text>
                 )}
               </View>
-              <TouchableOpacity activeOpacity={0.8}>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => navigation.navigate("WebView")}>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>View More</Text>
                 </View>

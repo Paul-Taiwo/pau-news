@@ -6,7 +6,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const NewsCard = ({ handlePress }) => {
   return (
-    <TouchableOpacity onPress={handlePress}>
+    <TouchableOpacity activeOpacity={0.6} onPress={handlePress}>
       <View style={style.card}>
         <Image style={style.cardImg} source={require("../../assets/images/star.jpg")} />
         <View style={style.textContainer}>

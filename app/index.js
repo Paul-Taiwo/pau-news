@@ -7,6 +7,7 @@ import { AntDesign } from "@expo/vector-icons";
 
 import { HomeScreenStack, DetailsScreen } from "./screens";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import WebViewScreen from "./screens/WebViewScreen";
 
 const Stack = createStackNavigator();
 
@@ -58,6 +59,13 @@ export default function MainApp() {
             name='Details'
             component={DetailsScreen}
             options={detailsScreenOption}
+          />
+          <Stack.Screen
+            name='WebView'
+            component={WebViewScreen}
+            options={{
+              headerShown: false,
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>

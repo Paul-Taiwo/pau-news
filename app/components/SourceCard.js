@@ -3,9 +3,15 @@ import { View, Image, Text, StyleSheet } from "react-native";
 
 import bbc from "../../assets/images/bbc.jpg";
 
-const SourcesCard = () => {
+const SourcesCard = ({ bgColor }) => {
   return (
-    <View style={style.sourceCard}>
+    <View
+      style={[
+        style.sourceCard,
+        {
+          backgroundColor: bgColor,
+        },
+      ]}>
       <View style={style.sourceCardImgContainer}>
         <Image style={style.sourceCardImg} source={bbc} />
       </View>
@@ -19,8 +25,8 @@ const SourcesCard = () => {
             flexDirection: "row",
           }}>
           <Text numberOfLines={2} style={style.sourceCardText}>
-            Use BBC News for up-to-the-minute news, breaking news, video, audio
-            and feature stories.
+            Use BBC News for up-to-the-minute news, breaking news, video, audio and
+            feature stories.
           </Text>
         </View>
         <Text style={style.sourceCardTime}>June 24, 2019</Text>
@@ -34,7 +40,6 @@ const style = StyleSheet.create({
     width: 250,
     padding: 12,
     borderRadius: 15,
-    backgroundColor: "#2301a6",
     flexDirection: "row",
     marginRight: 10,
   },
