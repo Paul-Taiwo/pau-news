@@ -1,31 +1,30 @@
 import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import { View, Text, TouchableOpacity } from "react-native";
+import { ScrollView, Text, View, SafeAreaView } from "react-native";
+import globalStyle from "../styles/globalStyle";
+import NewsCard from "../components/NewsCard";
 
 const DynamicScreen = ({ name, navigation }) => {
+  const handleNavigation = () => {
+    navigation.navigate("Details", {
+      tabName: name,
+      itemId: 234,
+    });
+  };
+
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>{name}</Text>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Details", {
-            tabName: name,
-            itemId: 234,
-          });
-        }}
-        style={{
-          padding: 10,
-          fontSize: 18,
-          backgroundColor: "#000",
-        }}>
-        <Text
-          style={{
-            color: "#fff",
-          }}>
-          Click
-        </Text>
-      </TouchableOpacity>
-    </View>
+    <SafeAreaView>
+      <ScrollView>
+        <View style={globalStyle.pageContainer}>
+          {/* <Text>{name}</Text> */}
+
+          <View>
+            {[...Array(5).keys()].map((x, ind) => {
+              return <NewsCard handlePress={handleNavigation} />;
+            })}
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

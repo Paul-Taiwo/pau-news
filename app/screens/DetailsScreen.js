@@ -93,8 +93,8 @@ const styles = StyleSheet.create({
   pageCard: {
     height: "100%",
     marginTop: Platform.OS === "ios" ? -53 : -45,
-    borderTopRightRadius: Platform.OS === "android" ? 45 : 60,
-    borderTopLeftRadius: Platform.OS === "android" ? 45 : 60,
+    borderTopRightRadius: Platform.OS === "android" ? 45 : 50,
+    borderTopLeftRadius: Platform.OS === "android" ? 45 : 50,
     backgroundColor: "#fff",
   },
   headerText: {

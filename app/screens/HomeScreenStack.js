@@ -31,27 +31,35 @@ const tabs = [
   },
 ];
 
+const Tabs = tabs.map(({ name, Component }, ind) => (
+  <Tab.Screen name={name} key={ind}>
+    {(props) => <Component {...props} name={name} />}
+  </Tab.Screen>
+));
+
+const tabBarOptions = {
+  indicatorStyle: { backgroundColor: "transparent" },
+  activeTintColor: "#000",
+  inactiveTintColor: "gray",
+  scrollEnabled: true,
+  tabStyle: {
+    width: 135,
+  },
+  labelStyle: { fontFamily: "Nunito-Bold", fontSize: 12, fontWeight: "500" },
+  style: {
+    elevation: 0,
+    shadowOpacity: 0,
+  },
+};
+
 const HomeScreenStack = () => {
   return (
     <Tab.Navigator
       lazy={true}
       backBehavior='history'
       swipeEnabled={true}
-      tabBarOptions={{
-        indicatorStyle: { backgroundColor: "transparent" },
-        activeTintColor: "#000",
-        inactiveTintColor: "gray",
-        scrollEnabled: true,
-        tabStyle: {
-          width: 135,
-        },
-        labelStyle: { fontFamily: "Nunito-Bold", fontSize: 12, fontWeight: "500" },
-      }}>
-      {tabs.map(({ name, Component }) => (
-        <Tab.Screen name={name}>
-          {(props) => <Component {...props} name={name} />}
-        </Tab.Screen>
-      ))}
+      tabBarOptions={tabBarOptions}>
+      {Tabs}
     </Tab.Navigator>
   );
 };

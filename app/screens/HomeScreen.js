@@ -6,8 +6,14 @@ import Featureds from "../components/Featureds";
 import SourcesCard from "../components/SourceCard";
 import NewsCard from "../components/NewsCard";
 
-const HomeScreen = () => {
+const HomeScreen = ({ name, navigation }) => {
   const Width = Dimensions.get("window").width;
+  const handleNavigation = () => {
+    navigation.navigate("Details", {
+      tabName: name,
+      itemId: 234,
+    });
+  };
 
   return (
     <SafeAreaView style={globalStyle.container}>
@@ -56,11 +62,11 @@ const HomeScreen = () => {
               backgroundColor: "#f2f2f2",
             },
           ]}>
-          <NewsCard />
-          <NewsCard />
-          <NewsCard />
-          <NewsCard />
-          <NewsCard />
+          <NewsCard handlePress={handleNavigation} />
+          <NewsCard handlePress={handleNavigation} />
+          <NewsCard handlePress={handleNavigation} />
+          <NewsCard handlePress={handleNavigation} />
+          <NewsCard handlePress={handleNavigation} />
         </View>
       </ScrollView>
     </SafeAreaView>
