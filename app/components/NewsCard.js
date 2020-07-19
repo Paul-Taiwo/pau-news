@@ -2,31 +2,31 @@ import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
 
 import star from "../../assets/images/star.jpg";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-const NewsCard = () => {
+const NewsCard = ({ handlePress }) => {
   return (
-    <View style={style.card}>
-      <Image
-        style={style.cardImg}
-        source={require("../../assets/images/star.jpg")}
-      />
-      <View style={style.textContainer}>
-        <View style={{ paddingRight: 7 }}>
-          <Text numberOfLines={2} style={style.cardHeader}>
-            NASA's Green Propellant Infusion Mission Deploys
-          </Text>
-        </View>
-        <View style={{ paddingRight: 10 }}>
-          <Text style={style.textContent}>
-            NASA's Green Propellant Infusion Mission (GPIM) has successfully
-            deployed at 3:57 a.m. EDT
-          </Text>
-        </View>
-        <View>
-          <Text style={style.cardTime}>June 24, 2019</Text>
+    <TouchableOpacity onPress={handlePress}>
+      <View style={style.card}>
+        <Image style={style.cardImg} source={require("../../assets/images/star.jpg")} />
+        <View style={style.textContainer}>
+          <View style={{ paddingRight: 7 }}>
+            <Text numberOfLines={2} style={style.cardHeader}>
+              NASA's Green Propellant Infusion Mission Deploys
+            </Text>
+          </View>
+          <View style={{ paddingRight: 10 }}>
+            <Text style={style.textContent}>
+              NASA's Green Propellant Infusion Mission (GPIM) has successfully deployed at
+              3:57 a.m. EDT
+            </Text>
+          </View>
+          <View>
+            <Text style={style.cardTime}>June 24, 2019</Text>
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
