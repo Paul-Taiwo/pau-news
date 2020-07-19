@@ -70,6 +70,7 @@ const DetailsScreen = () => {
           contentContainerStyle={{
             paddingRight: 20 - 12,
             paddingLeft: 20,
+            backgroundColor: "#ffffff",
           }}
           style={[globalStyle.mb20]}>
           <Featureds />
@@ -90,6 +91,7 @@ const styles = StyleSheet.create({
     opacity: 0.4,
   },
   pageCard: {
+    height: "100%",
     marginTop: Platform.OS === "ios" ? -53 : -45,
     borderTopRightRadius: Platform.OS === "android" ? 45 : 60,
     borderTopLeftRadius: Platform.OS === "android" ? 45 : 60,
@@ -101,7 +103,7 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   contentText: {
-    color: "#000",
+    color: "#9d9d9d",
     lineHeight: 30,
     fontSize: 14,
   },
