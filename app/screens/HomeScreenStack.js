@@ -7,7 +7,7 @@ const Tab = createMaterialTopTabNavigator();
 const tabs = [
   {
     name: "World",
-    Component: DynamicScreen,
+    Component: HomeScreen,
   },
   {
     name: "Business",

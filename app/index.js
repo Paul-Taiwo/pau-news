@@ -13,7 +13,8 @@ const Stack = createStackNavigator();
 
 export default function MainApp() {
   return (
-    <SafeAreaView style={globalStyle.container}>
+    <>
+      {/* <SafeAreaView style={globalStyle.container}> */}
       <StatusBar style='auto' />
 
       <NavigationContainer>
@@ -38,12 +39,19 @@ export default function MainApp() {
           <Stack.Screen
             name='Details'
             component={DetailsScreen}
-            options={({ route }) => ({
-              title: route.params.tabName ? route.params.tabName : route.name,
-            })}
+            headerTr
+            options={
+              (({ route }) => ({
+                title: route.params.tabName ? route.params.tabName : route.name,
+              }),
+              {
+                headerTransparent: true,
+              })
+            }
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </SafeAreaView>
+      {/* </SafeAreaView> */}
+    </>
   );
 }

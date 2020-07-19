@@ -3,7 +3,7 @@ import { StyleSheet, Platform, StatusBar } from "react-native";
 const globalStyle = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    // marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   pageContainer: {
     paddingHorizontal: 20,
