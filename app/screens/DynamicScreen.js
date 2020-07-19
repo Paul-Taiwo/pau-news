@@ -8,7 +8,10 @@ const DynamicScreen = ({ name, navigation }) => {
       <Text>{name}Hre</Text>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("Details");
+          navigation.navigate("Details", {
+            tabName: name,
+            itemId: 234,
+          });
         }}
         style={{
           padding: 10,
