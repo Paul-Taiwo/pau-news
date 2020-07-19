@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 const DynamicScreen = ({ name, navigation }) => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>{name}Hre</Text>
+      <Text>{name}</Text>
       <TouchableOpacity
         onPress={() => {
           navigation.navigate("Details", {

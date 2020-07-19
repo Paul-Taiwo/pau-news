@@ -40,14 +40,22 @@ export default function MainApp() {
             name='Details'
             component={DetailsScreen}
             headerTr
-            options={
-              (({ route }) => ({
-                title: route.params.tabName ? route.params.tabName : route.name,
-              }),
-              {
-                headerTransparent: true,
-              })
-            }
+            options={({ route }) => ({
+              title: route.params.tabName ? route.params.tabName : route.name,
+              headerTransparent: true,
+              headerTintColor: "#fff",
+              headerTitleStyle: {
+                fontSize: 16,
+              },
+              headerBackImage: () => (
+                <AntDesign name='arrowleft' size={24} color='#fff' />
+              ),
+              headerRight: () => (
+                <TouchableOpacity>
+                  <AntDesign name='search1' size={24} color='#fff' />
+                </TouchableOpacity>
+              ),
+            })}
           />
         </Stack.Navigator>
       </NavigationContainer>
