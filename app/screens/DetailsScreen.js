@@ -31,94 +31,34 @@ const DetailsScreen = () => {
 
       <ScrollView style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
-          <ImageBackground
-            source={img}
-            style={{ width: "100%", height: Platform.OS === "ios" ? 380 : 320 }}>
-            <View
-              style={{
-                ...StyleSheet.absoluteFillObject,
-                backgroundColor: "#000000",
-                opacity: 0.4,
-              }}
-            />
+          <ImageBackground source={img} style={styles.image}>
+            <View style={styles.imageOverlay} />
             <View>
               <Text>Hi</Text>
             </View>
           </ImageBackground>
-          <View
-            style={{
-              marginTop: Platform.OS === "ios" ? -53 : -45,
-              // height: "100%",
-              borderTopRightRadius: Platform.OS === "android" ? 45 : 60,
-              borderTopLeftRadius: Platform.OS === "android" ? 45 : 60,
-              backgroundColor: "#fff",
-            }}>
-            <View
-              style={[
-                globalStyle.pageContainer,
-                {
-                  marginTop: 45,
-                },
-              ]}>
-              <View
-                style={{
-                  marginBottom: 20,
-                }}>
-                <Text
-                  style={{
-                    fontFamily: "Nunito-ExtraBold",
-                    fontSize: 20,
-                    color: "#000",
-                  }}>
+          <View style={styles.pageCard}>
+            <View style={[globalStyle.pageContainer, styles.mt_45]}>
+              <View style={globalStyle.mb20}>
+                <Text style={styles.headerText}>
                   Why A Short-Term Melt-Up Seems Likely Here - Seeking Alpha
                 </Text>
               </View>
               {/* {news.fetched && <WebView source={{ uri: "https://www.freerepublic.com/focus/f-chat/3866263/posts" }} />} */}
 
-              <View
-                style={{
-                  marginBottom: 30,
-                }}>
+              <View style={styles.mb_30}>
                 {news.fetched && (
-                  <Text
-                    style={{
-                      color: "#000",
-                      lineHeight: 30,
-                      fontSize: 14,
-                    }}>
-                    {news.data.content}
-                  </Text>
+                  <Text style={styles.contentText}>{news.data.content}</Text>
                 )}
               </View>
-              <TouchableOpacity>
-                <View
-                  style={{
-                    padding: 10,
-                    backgroundColor: "#DDDDDD",
-                    alignItems: "center",
-                  }}>
-                  <Text
-                    style={{
-                      color: "#fff",
-                    }}>
-                    View More
-                  </Text>
+              <TouchableOpacity activeOpacity={0.8}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>View More</Text>
                 </View>
               </TouchableOpacity>
 
-              <View
-                style={{
-                  marginTop: 30,
-                  marginBottom: 25,
-                }}>
-                <Text
-                  style={{
-                    fontSize: 18,
-                    fontFamily: "Nunito-ExtraBold",
-                    color: "#000",
-                  }}>
-                  Related
-                </Text>
+              <View style={styles.relatedContainer}>
+                <Text style={styles.relatedHeaderText}>Related</Text>
               </View>
             </View>
           </View>
@@ -138,5 +78,58 @@ const DetailsScreen = () => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  image: {
+    width: "100%",
+    height: Platform.OS === "ios" ? 380 : 320,
+  },
+  imageOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "#000000",
+    opacity: 0.4,
+  },
+  pageCard: {
+    marginTop: Platform.OS === "ios" ? -53 : -45,
+    borderTopRightRadius: Platform.OS === "android" ? 45 : 60,
+    borderTopLeftRadius: Platform.OS === "android" ? 45 : 60,
+    backgroundColor: "#fff",
+  },
+  headerText: {
+    fontFamily: "Nunito-ExtraBold",
+    fontSize: 20,
+    color: "#000",
+  },
+  contentText: {
+    color: "#000",
+    lineHeight: 30,
+    fontSize: 14,
+  },
+  button: {
+    padding: 10,
+    backgroundColor: "#000",
+    alignItems: "center",
+    borderRadius: 3,
+  },
+  buttonText: {
+    color: "#fff",
+    fontFamily: "Nunito-Black",
+  },
+  relatedContainer: {
+    marginTop: 30,
+    marginBottom: 25,
+  },
+  relatedHeaderText: {
+    fontSize: 18,
+    fontFamily: "Nunito-ExtraBold",
+    color: "#000",
+  },
+  mt_45: {
+    marginTop: 45,
+  },
+  mb_30: {
+    marginBottom: 30,
+  },
+});
 
 export default DetailsScreen;
