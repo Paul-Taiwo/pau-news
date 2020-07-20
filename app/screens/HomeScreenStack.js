@@ -4,6 +4,8 @@ import { HomeScreen, DynamicScreen } from "./";
 
 const Tab = createMaterialTopTabNavigator();
 
+const getComponent = () => DynamicScreen;
+
 const tabs = [
   {
     name: "World",
@@ -11,31 +13,33 @@ const tabs = [
   },
   {
     name: "Business",
-    Component: DynamicScreen,
+    Component: getComponent(),
   },
   {
     name: "Politics",
-    Component: DynamicScreen,
+    Component: getComponent(),
   },
   {
     name: "Tech",
-    Component: DynamicScreen,
+    Component: getComponent(),
   },
   {
     name: "Entertainment",
-    Component: DynamicScreen,
+    Component: getComponent(),
   },
   {
     name: "Religion",
-    Component: DynamicScreen,
+    Component: getComponent(),
   },
 ];
 
-const Tabs = tabs.map(({ name, Component }, ind) => (
-  <Tab.Screen name={name} key={ind}>
-    {(props) => <Component {...props} name={name} />}
-  </Tab.Screen>
-));
+const Tabs = tabs.map(({ name, Component }, ind) => {
+  return (
+    <Tab.Screen name={name} key={ind}>
+      {(props) => <Component {...props} name={name} />}
+    </Tab.Screen>
+  );
+});
 
 const tabBarOptions = {
   indicatorStyle: { backgroundColor: "transparent" },
