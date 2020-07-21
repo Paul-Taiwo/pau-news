@@ -9,8 +9,11 @@ import {
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { AntDesign } from "@expo/vector-icons";
+import { WebView } from "react-native-webview";
 
-const WebViewScreen = ({ navigation }) => {
+const WebViewScreen = ({ navigation, route }) => {
+  const { urlToWeb } = route.params;
+
   return (
     <>
       <StatusBar style='auto' />
@@ -27,7 +30,7 @@ const WebViewScreen = ({ navigation }) => {
             // borderWidth: 2,
             // borderColor: "red",
           }}>
-          <Text>Hey</Text>
+          <WebView source={{ uri: urlToWeb }} />
           <View
             style={{
               position: "absolute",
@@ -37,7 +40,7 @@ const WebViewScreen = ({ navigation }) => {
             <TouchableOpacity
               activeOpacity={0.7}
               style={{
-                backgroundColor: "#000",
+                backgroundColor: "red",
                 width: 50,
                 height: 50,
                 justifyContent: "center",

@@ -1,6 +1,7 @@
 import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { HomeScreen, DynamicScreen } from "./";
+import HomeScreen from "./HomeScreen";
+import DynamicScreen from "./DynamicScreen";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -20,7 +21,7 @@ const tabs = [
     Component: getComponent(),
   },
   {
-    name: "Tech",
+    name: "Technology",
     Component: getComponent(),
   },
   {
@@ -28,7 +29,11 @@ const tabs = [
     Component: getComponent(),
   },
   {
-    name: "Religion",
+    name: "Sports",
+    Component: getComponent(),
+  },
+  {
+    name: "Health",
     Component: getComponent(),
   },
 ];

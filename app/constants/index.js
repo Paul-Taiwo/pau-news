@@ -3,7 +3,7 @@ import { ENV_API_URL, ENV_API_KEY1, ENV_API_KEY2 } from "@env";
 const bgColors = ["#2301a6", "#cc822c", "#375057", "#030128"];
 
 const NAME = "news";
-const PAGESIZE = 20;
+const PAGESIZE = 100;
 
 // console.log("============>", ENV_API_KEY1);
 

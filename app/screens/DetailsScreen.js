@@ -1,37 +1,31 @@
 import axios from "axios";
 import { StatusBar } from "expo-status-bar";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View, Text, ImageBackground, Platform, StyleSheet } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import { WebView } from "react-native-webview";
 
 import img from "../../assets/images/bbc.jpg";
 import globalStyle from "../styles/globalStyle";
 import Featureds from "../components/Featureds";
 
-const DetailsScreen = ({ navigation }) => {
+const DetailsScreen = ({ navigation, route }) => {
   const [news, setNews] = useState({
     fetched: false,
     data: {},
   });
 
-  useEffect(() => {
-    // axios
-    //   .get(
-    //     "http://newsapi.org/v2/everything?q=bitcoin&from=2020-06-19&sortBy=publishedAt&apiKey=100440efe93846779e7d7aa990683d66"
-    //   )
-    //   .then((res) => {
-    //     console.log("===========+>", res.data.articles[0].content);
-    //     setNews({ fetched: true, data: { ...res.data.articles[0] } });
-    //   });
-  }, []);
+  const { data } = route.params;
+
+  const imgSrc = data ? { uri: data.urlToImage } : img;
+  const description = data.description == null ? "" : data.description + "...";
+
   return (
     <>
       <StatusBar style='light' />
 
       <ScrollView style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
-          <ImageBackground source={img} style={styles.image}>
+          <ImageBackground source={imgSrc} style={styles.image}>
             <View style={styles.imageOverlay} />
             <View>
               <Text>Hi</Text>
@@ -40,20 +34,20 @@ const DetailsScreen = ({ navigation }) => {
           <View style={styles.pageCard}>
             <View style={[globalStyle.pageContainer, styles.mt_45]}>
               <View style={globalStyle.mb20}>
-                <Text style={styles.headerText}>
-                  Why A Short-Term Melt-Up Seems Likely Here - Seeking Alpha
-                </Text>
+                <Text style={styles.headerText}>{data.title}</Text>
               </View>
-              {/* {news.fetched && <WebView source={{ uri: "https://www.freerepublic.com/focus/f-chat/3866263/posts" }} />} */}
 
               <View style={styles.mb_30}>
-                {news.fetched && (
-                  <Text style={styles.contentText}>{news.data.content}</Text>
-                )}
+                <Text style={styles.contentText}>{description}</Text>
               </View>
+
               <TouchableOpacity
                 activeOpacity={0.8}
-                onPress={() => navigation.navigate("WebView")}>
+                onPress={() =>
+                  navigation.navigate("WebView", {
+                    urlToWeb: data.url,
+                  })
+                }>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>View More</Text>
                 </View>
@@ -105,7 +99,7 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   contentText: {
-    color: "#9d9d9d",
+    color: "#939393",
     lineHeight: 30,
     fontSize: 14,
   },

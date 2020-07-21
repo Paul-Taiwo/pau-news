@@ -1,28 +1,31 @@
 import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
+import moment from "moment";
 
 import star from "../../assets/images/star.jpg";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const NewsCard = ({ handlePress }) => {
+const NewsCard = ({ data, handlePress }) => {
+  const imgSrc = data ? { uri: data.urlToImage } : star;
+  const timePublished = moment(data.publishedAt).format("MMMM DD, YYYY");
+  const description =
+    data.description == null ? "" : data.description.slice(0, 87) + "...";
+
   return (
-    <TouchableOpacity activeOpacity={0.6} onPress={handlePress}>
+    <TouchableOpacity activeOpacity={0.6} onPress={() => handlePress(data)}>
       <View style={style.card}>
-        <Image style={style.cardImg} source={require("../../assets/images/star.jpg")} />
+        <Image style={style.cardImg} source={imgSrc} />
         <View style={style.textContainer}>
           <View style={{ paddingRight: 7 }}>
             <Text numberOfLines={2} style={style.cardHeader}>
-              NASA's Green Propellant Infusion Mission Deploys
+              {data.title}
             </Text>
           </View>
           <View style={{ paddingRight: 10 }}>
-            <Text style={style.textContent}>
-              NASA's Green Propellant Infusion Mission (GPIM) has successfully deployed at
-              3:57 a.m. EDT
-            </Text>
+            <Text style={style.textContent}>{description}</Text>
           </View>
           <View>
-            <Text style={style.cardTime}>June 24, 2019</Text>
+            <Text style={style.cardTime}>{timePublished}</Text>
           </View>
         </View>
       </View>
@@ -38,6 +41,8 @@ const style = StyleSheet.create({
     marginBottom: 10,
     padding: 8,
     borderRadius: 12,
+    maxHeight: 120,
+    minHeight: 120,
     backgroundColor: "#ffffff",
     // shadowColor: "#ededed",
     // shadowOffset: "2px 4px ",
@@ -57,7 +62,6 @@ const style = StyleSheet.create({
     color: "#000",
     fontSize: 15,
     lineHeight: 20,
-    flex: 1,
     flexWrap: "wrap",
     marginBottom: 4,
   },
