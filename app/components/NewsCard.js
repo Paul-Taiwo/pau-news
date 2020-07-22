@@ -6,8 +6,8 @@ import star from "../../assets/images/star.jpg";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const NewsCard = ({ data, handlePress }) => {
-  const imgSrc = data ? { uri: data.urlToImage } : star;
-  const timePublished = moment(data.publishedAt).format("MMMM DD, YYYY");
+  const imgSrc = data.urlToImage ? { uri: data.urlToImage } : star;
+  const timePublished = moment(data.publishedAt).fromNow();
   const description =
     data.description == null ? "" : data.description.slice(0, 87) + "...";
 
@@ -24,8 +24,22 @@ const NewsCard = ({ data, handlePress }) => {
           <View style={{ paddingRight: 10 }}>
             <Text style={style.textContent}>{description}</Text>
           </View>
-          <View>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              paddingRight: 10,
+            }}>
             <Text style={style.cardTime}>{timePublished}</Text>
+            <Text
+              style={[
+                style.cardTime,
+                {
+                  color: "#007bff",
+                },
+              ]}>
+              {data.source.name}
+            </Text>
           </View>
         </View>
       </View>

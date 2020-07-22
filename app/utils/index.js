@@ -3,9 +3,9 @@ import requestClient from "../services/RequestClient";
 
 const getBgColor = () => bgColors[Math.floor(Math.random() * bgColors.length)];
 
-const getHeadlines = async (country = "us", category) => {
+const getHeadlines = async (country = "us", category, page = 1) => {
   try {
-    let url = `${HEADLINES}&country=${country}&category=${category.toLowerCase()}`;
+    let url = `${HEADLINES}&country=${country}&category=${category.toLowerCase()}&page=${page}`;
     // console.log("URL ==========>", url);
     const response = await requestClient.get(url);
 
