@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
+// import CachedImage from "react-native-expo-cached-image";
 import moment from "moment";
 
 import star from "../../assets/images/star.jpg";

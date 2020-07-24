@@ -180,3 +180,10 @@ class DynamicScreen extends Component {
 }
 
 export default DynamicScreen;
+
+const styles = StyleSheet.create({
+  lottie: {
+    width: 100,
+    height: 100,
+  },
+});
